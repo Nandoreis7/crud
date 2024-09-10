@@ -1,0 +1,32 @@
+@model IEnumerable<CadastroApp.Data.Cadastro>
+
+<h2>Lista de Cadastros</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Altura</th>
+            <th>Email</th>
+            <th>Data de Nascimento</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cadastro in Model)
+        {
+            <tr>
+                <td>@cadastro.Nome</td>
+                <td>@cadastro.Altura</td>
+                <td>@cadastro.Email</td>
+                <td>@cadastro.DataNascimento.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@cadastro.Id" class="btn btn-danger" 
+                       onclick="return confirm('Tem certeza que deseja deletar?');">DEL</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Cadastro/Create" class="btn btn-danger">Novo Cadastro</a>

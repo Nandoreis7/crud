@@ -1,0 +1,25 @@
+@model CadastroApp.Data.Cadastro
+
+<h2>Novo Cadastro</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nome:</label>
+        <input asp-for="Nome" />
+    </div>
+    <div>
+        <label>Altura:</label>
+        <input asp-for="Altura" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <input asp-for="Email" type="email" />
+    </div>
+    <div>
+        <label>Data de Nascimento:</label>
+        <input asp-for="DataNascimento" type="date" />
+    </div>
+    
+    <button class="custom-btn btn-16" type="submit">Cadastrar</button>
+    
+</form>
