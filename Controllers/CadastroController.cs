@@ -51,5 +51,38 @@ namespace CadastroApp.Controllers
             return RedirectToAction("Index");
         }
 
+
+        public IActionResult Edit(int id)
+        {
+            var cadastro = _context.Cadastros.FirstOrDefault(c => c.Id == id);
+
+            if (cadastro == null)
+            {
+                return NotFound();
+            }
+
+            return View(cadastro);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Cadastro cadastro)
+        {
+            if (id != cadastro.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _context.Update(cadastro);
+                _context.SaveChanges();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(cadastro);
+        }
+
+
     }
 }

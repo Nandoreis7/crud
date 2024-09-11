@@ -21,9 +21,11 @@
                 <td>@cadastro.Email</td>
                 <td>@cadastro.DataNascimento.ToShortDateString()</td>
                 <td>
+                    <a asp-action="Edit" asp-route-id="@cadastro.Id" class="btn btn-primary">EDIT</a>
                     <a asp-action="Delete" asp-route-id="@cadastro.Id" class="btn btn-danger" 
                        onclick="return confirm('Tem certeza que deseja deletar?');">DEL</a>
                 </td>
+                
             </tr>
         }
     </tbody>
